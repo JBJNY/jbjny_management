@@ -37,7 +37,12 @@ module.exports = {
     modules: [path.join(__dirname, "src"), "node_modules"], // 모듈 위치
     extensions: [".js", ".jsx", ".ts", ".tsx"], // 절대경로 확장자명
     alias: {
-      "@src": path.resolve(__dirname, "src/"),
+      "@Hooks": path.resolve(__dirname, "src/hooks"),
+      "@Components": path.resolve(__dirname, "src/components"),
+      "@Pages": path.resolve(__dirname, "src/pages"),
+      "@Store": path.resolve(__dirname, "src/store"),
+      "@Types": path.resolve(__dirname, "src/types"),
+      "@Api": path.resolve(__dirname, "src/api"),
     },
   },
   plugins: [
