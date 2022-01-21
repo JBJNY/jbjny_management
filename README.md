@@ -1,6 +1,6 @@
 ## 실행가능한 스크립트
 
-1. `npm start`
+1. `npm run dev`
 
 - 프로젝트를 localhost:3000 주소로 개발용 모드로 실행합니다.
 
