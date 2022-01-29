@@ -1,19 +1,34 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "@Styles/theme";
 
 const Nav = () => {
+  const [menuSelected, setMenuSelected] = useState("meetingRoom");
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <Aside brown={theme.color.brown}>
       <Profile>
         <ProfileImg src="http://fpoimg.com/40x40" />
         <ProfileName>name</ProfileName>
       </Profile>
-      <NavSidebar>
-        <Item>회의실</Item>
-        <Item>회의실</Item>
-      </NavSidebar>
+      <NavMenu>
+        <Item
+          id="meetingRoom"
+          onClick={() => setIsOpen(!isOpen)}
+          menuSelected={menuSelected === "meetingRoom"}
+          lightPink={theme.color.lightPink}
+          isOpen={isOpen}
+        >
+          <span>회의실</span>
+          <span>◀</span>
+        </Item>
+
+        <MeetingRoomList lightPink={theme.color.lightPink} isOpen={isOpen}>
+          <MeetingRoom>내 회의실</MeetingRoom>
+          <MeetingRoom>회의실 1</MeetingRoom>
+          <MeetingRoom>회의실 2</MeetingRoom>
+        </MeetingRoomList>
+      </NavMenu>
     </Aside>
   );
 };
@@ -49,13 +64,45 @@ const ProfileName = styled.div`
   font-weight: 600;
 `;
 
-const NavSidebar = styled.div`
-  /* border: 1px solid red; */
+const NavMenu = styled.div`
+  position: relative;
 `;
 
-const Item = styled.div`
-  padding: 10px 0px 10px 10px;
-  border: 1px solid blue;
+const Item = styled.div<{ menuSelected: boolean; lightPink: string; isOpen: boolean }>`
+  padding: 15px 10px 15px 40px;
+  font-weight: 600;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
+  background-color: ${(props) => (props.menuSelected ? props.lightPink : "unset")};
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  span:nth-child(2) {
+    transition: all 0.5s;
+    transform: ${(props) => (props.isOpen ? "rotate(-90deg)" : "rotate(0deg)")};
+  }
+`;
+
+const MeetingRoomList = styled.ul<{ lightPink: string; isOpen: boolean }>`
+  overflow-y: hidden;
+  position: relative;
+  top: -7px;
+  margin: 0px;
+  height: ${(props) => (props.isOpen ? "150px" : "0px")};
+  list-style: none;
+  border-bottom-left-radius: 10px;
+  background-color: ${(props) => props.lightPink};
+  transition: all 0.5s;
+`;
+
+const MeetingRoom = styled.li`
+  padding: 15px 10px 15px 40px;
+  font-weight: 600;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  background-color: "unset";
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 `;
