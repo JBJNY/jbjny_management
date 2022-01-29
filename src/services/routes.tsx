@@ -10,7 +10,7 @@ function Router() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/main" element={<Main />} />
+        <Route path="/" element={<Main />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/admin_employee" element={<AdminEmployee />} />
