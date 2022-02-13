@@ -16,7 +16,8 @@
       "@Pages/*": ["src/pages/*"],
       "@Store/*": ["src/store/*"],
       "@Types/*": ["src/types/*"],
-      "@Api/*": ["src/api/*"]
+      "@Api/*": ["src/api/*"],
+      "@Styles/*": ["src/styles/*"]
     }
   }
 }

@@ -1,10 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Nav from "./Nav";
 
 const Layout = () => {
   return (
     <div>
-      기본 레이아웃
+      <Nav />
       <div>
         <Outlet />
       </div>
