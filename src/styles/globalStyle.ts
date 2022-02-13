@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 * {
   @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css');
   @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css');
@@ -12,5 +12,3 @@ body {
   margin: 0;
 }
 `;
-
-export default GlobalStyle;
