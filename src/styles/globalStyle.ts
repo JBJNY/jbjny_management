@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
   font-family: 'NanumGothic';
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+}
 `;
 
 export default GlobalStyle;

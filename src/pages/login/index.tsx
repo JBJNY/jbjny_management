@@ -15,9 +15,10 @@ function Login() {
 export default Login;
 
 const Wrapper = styled.div`
-  margin: auto;
-  width: 25%;
+  margin: 15% auto;
+  width: 20%;
   background-color: #fcf1ef;
   padding: 30px;
   border-radius: 30px;
+  text-align: center;
 `;

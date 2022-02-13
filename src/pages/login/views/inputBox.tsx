@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import InputController from "../controllers/inputController";
+import { InputController } from "../controllers/inputController";
+import { loginInputModal } from "../model/loginInputModel";
 
 function InputBox() {
-  const { inputState } = InputController();
+  const { inputState } = loginInputModal();
+  const { saveInputVal } = InputController();
   const inputStateArr = Object.entries(inputState);
 
   return (
     <>
       {inputStateArr.map(([key, value]) => (
-        <Input key={key} placeholder={value.placeholder} type={value.type} defaultValue={value.val} />
+        <Input
+          key={key}
+          placeholder={value.placeholder}
+          type={value.type}
+          defaultValue={value.val}
+          onChange={(e) => saveInputVal(value.type, e.target.value)}
+        />
       ))}
     </>
   );

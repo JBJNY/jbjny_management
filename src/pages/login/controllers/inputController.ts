@@ -1,27 +1,11 @@
-import loginInput from "@Store/loginAtom";
-import { useRecoilState } from "recoil";
+import { loginInputModal } from "../model/loginInputModel";
 
-function InputController() {
-  const [input, setInput] = useRecoilState(loginInput);
+export function InputController() {
+  const { setInput } = loginInputModal();
 
   function saveInputVal(type: string, val: string) {
     setInput((prevState) => ({ ...prevState, [type]: val }));
   }
 
-  const inputState = {
-    id: {
-      placeholder: "아이디",
-      type: "text",
-      val: input.id,
-    },
-    pw: {
-      placeholder: "비밀번호",
-      type: "password",
-      val: input.pw,
-    },
-  };
-
-  return { inputState, saveInputVal };
+  return { saveInputVal };
 }
-
-export default InputController;
