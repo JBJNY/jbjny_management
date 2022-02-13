@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "@Styles/theme";
+import MonitorIcon from "@mui/icons-material/Monitor";
+import HomeIcon from "@mui/icons-material/Home";
 
 const Nav = () => {
   const [menuSelected, setMenuSelected] = useState("meetingRoom");
@@ -19,14 +21,23 @@ const Nav = () => {
           lightPink={theme.color.lightPink}
           isOpen={isOpen}
         >
+          <MonitorIcon />
           <span>회의실</span>
-          <span>◀</span>
         </Item>
 
         <MeetingRoomList lightPink={theme.color.lightPink} isOpen={isOpen}>
-          <MeetingRoom>내 회의실</MeetingRoom>
-          <MeetingRoom>회의실 1</MeetingRoom>
-          <MeetingRoom>회의실 2</MeetingRoom>
+          <MeetingRoom>
+            <HomeIcon />
+            <span>내 회의실</span>
+          </MeetingRoom>
+          <MeetingRoom>
+            <HomeIcon />
+            <span>회의실 1</span>
+          </MeetingRoom>
+          <MeetingRoom>
+            <HomeIcon />
+            <span>회의실 2</span>
+          </MeetingRoom>
         </MeetingRoomList>
       </NavMenu>
     </Aside>
@@ -41,9 +52,12 @@ const Aside = styled.aside<{ brown: string }>`
   top: 0;
   width: 210px;
   background-color: ${(props) => props.brown};
-  height: 100%;
+  height: calc(100% - 40px);
   overflow-y: hidden;
   padding: 40px 0px 0px 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  user-select: none;
 `;
 
 const Profile = styled.div`
@@ -69,18 +83,17 @@ const NavMenu = styled.div`
 `;
 
 const Item = styled.div<{ menuSelected: boolean; lightPink: string; isOpen: boolean }>`
-  padding: 15px 10px 15px 40px;
+  padding: 15px 40px 15px 40px;
   font-weight: 600;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   background-color: ${(props) => (props.menuSelected ? props.lightPink : "unset")};
   display: flex;
-  justify-content: space-between;
   cursor: pointer;
 
-  span:nth-child(2) {
-    transition: all 0.5s;
-    transform: ${(props) => (props.isOpen ? "rotate(-90deg)" : "rotate(0deg)")};
+  span {
+    margin-top: 3px;
+    margin-left: 15px;
   }
 `;
 
@@ -89,7 +102,7 @@ const MeetingRoomList = styled.ul<{ lightPink: string; isOpen: boolean }>`
   position: relative;
   top: -7px;
   margin: 0px;
-  height: ${(props) => (props.isOpen ? "150px" : "0px")};
+  height: ${(props) => (props.isOpen ? "160px" : "0px")};
   list-style: none;
   border-bottom-left-radius: 10px;
   background-color: ${(props) => props.lightPink};
@@ -97,12 +110,16 @@ const MeetingRoomList = styled.ul<{ lightPink: string; isOpen: boolean }>`
 `;
 
 const MeetingRoom = styled.li`
-  padding: 15px 10px 15px 40px;
+  padding: 15px 20px 15px 20px;
   font-weight: 600;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   background-color: "unset";
   display: flex;
-  justify-content: space-between;
   cursor: pointer;
+
+  span {
+    margin-top: 3px;
+    margin-left: 15px;
+  }
 `;
